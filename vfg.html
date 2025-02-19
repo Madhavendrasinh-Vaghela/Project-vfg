@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football GOAT Vote: Ronaldo vs Messi</title>
+  <link rel="stylesheet" href="vgf.css">
+</head>
+<body>
+
+  <div class="hover-area" onmouseenter="showNav()" onmouseleave="hideNav()"></div>
+  <div class="navbar" id="navbar">
+    <div class="circular-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()"></button>
+  <h1>Vote for GOAT</h1>
+  <button onclick="resetVotes()">Reset Votes</button>
+
+  <div class="container">
+    <div class="cards-container">
+      <div class="card">
+        <img src="Ronaldo.png" alt="Cristiano Ronaldo">
+        <h2 class="player-name">Cristiano Ronaldo</h2>
+        <div class="vote-count" id="ronaldoCount">0</div>
+
+        <div class="vote-text">votes</div>
+        <button class="vote-btn" onclick="handleVote('Ronaldo')">Vote Ronaldo</button>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="card">
+        <img src="messi.png" alt="Lionel Messi">
+        <h2 class="player-name">Lionel Messi</h2>
+        <div class="vote-count" id="messiCount">0</div>
+        <div class="vote-text">votes</div>
+        <button class="vote-btn" onclick="handleVote('Messi')">Vote Messi</button>
+      </div>
+    </div>
+
+    <div class="stats-container">
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Goals</div>
+            <div class="stat-value">850+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Assists</div>
+            <div class="stat-value">230+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Champions League</div>
+            <div class="stat-value">5</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Ballon d'Or</div>
+            <div class="stat-value">5</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">International Goals</div>
+            <div class="stat-value">128</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Goals</div>
+            <div class="stat-value">800+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Assists</div>
+            <div class="stat-value">350+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">World Cup</div>
+            <div class="stat-value">1</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Ballon d'Or</div>
+            <div class="stat-value">8</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">International Goals</div>
+            <div class="stat-value">104</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">About</h3>
+        <div class="footer-links">
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Statistics</h3>
+        <div class="footer-links">
+          <a href="#">Career Stats</a>
+          <a href="#">Head to Head</a>
+          <a href="#">Records</a>
+          <a href="#">Achievements</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Connect</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Newsletter</h3>
+        <p>Subscribe to get the latest updates</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Enter your email">
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Football GOAT Comparison. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="thank-you" id="thankYouMessage"></div>
+
+  <script>
+
+function resetVotes() {
+  // Reset vote counts
+  votes.Ronaldo = 0;
+  votes.Messi = 0;
+
+  // Update display
+  document.getElementById('ronaldoCount').textContent = 0;
+  document.getElementById('messiCount').textContent = 0;
+
+  // Clear localStorage
+  localStorage.removeItem('footballVotes');
+  
+  console.log('Votes reset to zero');
+}
+
+const votes = {
+      Ronaldo: 0,
+      Messi: 0
+    };
+
+    function handleVote(player) {
+      // Increment vote count
+      votes[player]++;
+      
+      // Update display
+      const countElement = document.getElementById(`${player.toLowerCase()}Count`);
+      countElement.textContent = votes[player];
+      
+      // Remove animation class and re-add it to trigger animation
+      countElement.style.animation = 'none';
+      countElement.offsetHeight; // Trigger reflow
+      countElement.style.animation = 'countUpdate 0.5s ease-out';
+
+      // Show thank you message
+      showThankYou(player);
+
+      // Save votes to localStorage
+      try {
+        localStorage.setItem('footballVotes', JSON.stringify(votes));
+      } catch (e) {
+        console.log('localStorage not available');
+      }
+    }
+
+    // Load saved votes
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const savedVotes = localStorage.getItem('footballVotes');
+        if (savedVotes) {
+          const parsedVotes = JSON.parse(savedVotes);
+          votes.Ronaldo = parsedVotes.Ronaldo || 0;
+          votes.Messi = parsedVotes.Messi || 0;
+          
+          // Update display
+          document.getElementById('ronaldoCount').textContent = votes.Ronaldo;
+          document.getElementById('messiCount').textContent = votes.Messi;
+        }
+      } catch (e) {
+        console.log('localStorage not available');
+      }
+
+      // Remove initial text after animation
+      setTimeout(() => {
+        document.getElementById('ronaldoInitialText').style.display = 'none';
+        document.getElementById('messiInitialText').style.display = 'none';
+      }, 2000);
+    });
+
+   function toggleTheme() {
+      const body = document.body;
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    function showThankYou(player) {
+      const message = document.getElementById('thankYouMessage');
+      message.innerText = `Thank you for voting for ${player}!`;
+      message.style.opacity = '1';
+      setTimeout(() => {
+        message.style.opacity = '0';
+      }, 3000);
+    }
+
+    function showNav() {
+      const nav = document.getElementById("navbar");
+      nav.style.top = "0px";
+      nav.style.left = "0px";
+    }
+    function hideNav() {
+      const nav = document.getElementById("navbar");
+      nav.style.top = "-250px";
+      nav.style.left = "-250px";
+    }
+
+    function getRandomDigit() {
+      const digits = "0123456789".split("");
+      return digits[Math.floor(Math.random() * digits.length)];
+    }
+
+    function scrambleNumbers(element) {
+      let originalNumber = element.textContent;
+      let iterations = 0;
+      const interval = setInterval(() => {
+        element.textContent = originalNumber.split('').map((digit, i) => {
+          return i <= iterations ? originalNumber[i] : getRandomDigit();
+        }).join('');
+
+        iterations += 0.5;
+        if (iterations >= originalNumber.length) {
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+
+    window.addEventListener('load', () => {
+      scrambleNumbers(document.getElementById('ronaldoCount'));
+      scrambleNumbers(document.getElementById('messiCount'));
+    });
+  </script>
+</body>
+</html>
