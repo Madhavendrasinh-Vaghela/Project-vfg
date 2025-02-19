@@ -10,6 +10,10 @@
   --link-color: #666;
   --link-hover: #333;
   --border-color: #eaeaea;
+  --nav-size: 250px;
+  --nav-bg: #333;
+  --nav-hover: #00ff88;
+  --transition-speed: 0.4s;
 }
 
 [data-theme="dark"] {
@@ -335,47 +339,74 @@ h1 {
   }
 } 
 
-.navbar {
-  height: 250px;
-  width: 250px;
+.nav-container {
   position: fixed;
-  top: -250px;
-  left: -250px;
+  top: 0;
+  left: 0;
+  width: var(--nav-size);
+  height: var(--nav-size);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.hover-trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  pointer-events: auto;
+  z-index: 1001;
+}
+
+.navbar {
+  position: absolute;
+  top: calc(-1.0001 * var(--nav-size));
+  left: calc(-1.0001 * var(--nav-size));
+  width: var(--nav-size);
+  height: var(--nav-size);
   background: var(--text-color);
   color: var(--background);
-  border-radius: 0 0 250px 0;
-  transition: top 0.4s ease, left 0.4s ease;
+  border-radius: 0 0 100% 0;
+  transition: transform var(--transition-speed) ease;
+  pointer-events: none;
 }
+
+.nav-container:hover .navbar {
+  transform: translate(var(--nav-size), var(--nav-size));
+  pointer-events: auto;
+}
+
 .circular-links {
   position: relative;
   width: 180px;
   height: 180px;
-  border-radius: 50%;
 }
 .circular-links a {
   position: absolute;
-  color: var(--background);
-  text-decoration: none;
-  -ms-text-size-adjust: auto;
-  font-weight: bold;
-  font-size: 14px;
-  transition: transform 0.3s ease, color 0.3s ease;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: transform 0.3s ease, color 0.3s ease;
+      pointer-events: auto;
 }
 .circular-links a:hover {
   transform: scale(1.2);
-  color: #00ff88;
+  color: var(--nav-hover);
 }
 .circular-links a:nth-child(1) { top: 20%; left: 100%; }
 .circular-links a:nth-child(2) { top: 45%; left: 85%; }
 .circular-links a:nth-child(3) { top: 70%; left: 70%; }
 .circular-links a:nth-child(4) { top: 95%; left: 50%; }
-.hover-area {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100px;
-  width: 100px;
-  z-index: 5;
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.nav-container:hover .circular-links a {
+  animation: fadeIn 0.3s ease forwards;
 }
 
 .vote-count {
