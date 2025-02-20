@@ -1,187 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Football GOAT Vote</title>
-    <link rel="stylesheet" href="vgf.css">
-    <style>
-        .auth-container {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Football GOAT Vote</title>
+  <link rel="stylesheet" href="vgf.css">
+  <style>
+  .auth-container {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+  }
 
-        .auth-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: var(--card-shadow);
-        }
+  .auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
-        .auth-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+  .auth-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 
-        .auth-header h1 {
-            font-size: 2rem;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-        }
+  .auth-header p {
+    color: var(--secondary-text);
+  }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
 
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: var(--input-bg);
-            color: var(--input-text);
-        }
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--input-text);
+  }
 
-        .auth-button {
-            width: 100%;
-            padding: 1rem;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
+  .form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
 
-        .auth-button:hover {
-            background: #0056b3;
-        }
+  .auth-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
 
-        .auth-links {
-            text-align: center;
-            margin-top: 1.5rem;
-            color: var(--secondary-text);
-        }
+  .auth-btn:hover {
+    background: #0056b3;
+  }
 
-        .auth-links a {
-            color: #007bff;
-            text-decoration: none;
-            margin-left: 0.5rem;
-        }
+  .auth-link {
+    text-align: center;
+    color: var(--secondary-text);
+  }
 
-        .auth-links a:hover {
-            text-decoration: underline;
-        }
+  .auth-link a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
 
-        #errorMessage {
-            color: #dc3545;
-            text-align: center;
-            margin-top: 1rem;
-            display: none;
-        }
-    </style>
+  .auth-link a:hover {
+    text-decoration: underline;
+  }
+
+  .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-text);
+  }
+</style>
+  </head>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()"></button>
+  <button class="theme-toggle" onclick="toggleTheme()"></button>
 
-    <div class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                <h1>Create Account</h1>
-                <p>Join and vote for the GOAT</p>
-            </div>
-
-            <form id="signupForm" onsubmit="return handleSignup(event)">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" required>
-                </div>
-
-                <div id="errorMessage"></div>
-
-                <button type="submit" class="auth-button">Sign Up</button>
-            </form>
-
-            <div class="auth-links">
-                Already have an account? <a href="login.html">Login</a>
-            </div>
-        </div>
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1>Create Account</h1>
+      <p>Join the community and vote for your GOAT</p>
     </div>
 
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
-        }
+    <form id="signupForm" onsubmit="return handleSignup(event)">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+      </div>
 
-        function handleSignup(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const errorMessage = document.getElementById('errorMessage');
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
 
-            // Simple validation
-            if (!name || !email || !password || !confirmPassword) {
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = 'Please fill in all fields';
-                return false;
-            }
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
 
-            if (password !== confirmPassword) {
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = 'Passwords do not match';
-                return false;
-            }
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" required>
+      </div>
 
-            // Store signup data (replace with your backend logic)
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userName', name);
+      <button type="submit" class="auth-btn">Sign Up</button>
+      
+      <div class="auth-link">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </form>
+  </div>
 
-            // Redirect to main page
-            window.location.href = 'index.html';
-            return false;
-        }
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
+    }
 
-        // Check if already logged in
-        window.onload = function() {
-            if (localStorage.getItem('isLoggedIn')) {
-                window.location.href = 'index.html';
-            }
-        }
-    </script>
+    function handleSignup(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords don't match!");
+        return false;
+      }
+
+      // Store signup info
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', name);
+      
+      // Redirect to main page
+      window.location.href = 'index.html';
+    }
+  </script>
 </body>
 </html>
