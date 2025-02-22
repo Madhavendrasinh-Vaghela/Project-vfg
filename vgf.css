@@ -397,8 +397,8 @@ h1 {
 }
 .circular-links a:nth-child(1) { top: 20%; left: 100%; }
 .circular-links a:nth-child(2) { top: 45%; left: 85%; }
-.circular-links a:nth-child(3) { top: 70%; left: 70%; }
-.circular-links a:nth-child(4) { top: 95%; left: 50%; }
+.circular-links a:nth-child(3) { top: 70%; left: 65%; }
+.circular-links a:nth-child(4) { top: 95%; left: 40%; }
 
 @keyframes fadeIn {
   from { opacity: 0; }
