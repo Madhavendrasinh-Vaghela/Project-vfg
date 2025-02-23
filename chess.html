@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>F1 GOAT Vote: Max vs Lewis</title>
+  <title>Chess GOAT Vote: Magnus vs Hikaru</title>
   <style>
     :root {
       --background: #f5f5f5;
@@ -311,7 +311,7 @@
     }
 
     .circular-links a:nth-child(1) { top: 20%; left: 100%; }
-    .circular-links a:nth-child(2) { top: 45%; left: 85%; }
+    .circular-links a:nth-child(2) { top: 45%; left: 80%; }
     .circular-links a:nth-child(3) { top: 70%; left: 65%; }
     .circular-links a:nth-child(4) { top: 95%; left: 40%; }
 
@@ -436,15 +436,15 @@
       }
     }
     </style>
+    
 </head>
 <body>
-
     <div class="nav-container">
         <div class="hover-trigger"></div>
         <nav class="navbar">
           <div class="circular-links">
             <a  href="file:///C:/JS/vgf%20project/vfg.html" target="_blank">Football</a>
-            <a  href="https://example.com" target="_blank">Chess</a>
+            <a  href="C:\JS\vgf project\f1.html" target="_blank">F1Racer</a>
             <a  href="file:///C:/JS/vgf%20project/cricket.html#contact" target="_blank">Cricket</a>
             <a  href="C:\JS\vgf project\basketball.html" target="_blank">Basketball</a>
           </div>
@@ -452,23 +452,23 @@
       </div>
 
   <button class="theme-toggle" onclick="toggleTheme()"></button>
-  <h1>Vote for F1 GOAT</h1>
+  <h1>Vote for Chess GOAT</h1>
   <div class="container">
     <div class="cards-container">
       <div class="card">
-        <img src="max verpestine.webp" alt="Max Verstappen">
-        <h2 class="player-name">Max Verstappen</h2>
-        <div class="vote-count" id="maxCount">0</div>
+        <img src="magnus.jpg" alt="Magnus Carlsen">
+        <h2 class="player-name">Magnus Carlsen</h2>
+        <div class="vote-count" id="magnusCount">0</div>
         <div class="vote-text">votes</div>
-        <button class="vote-btn" onclick="handleVote('Max')">Vote Max</button>
+        <button class="vote-btn" onclick="handleVote('Magnus')">Vote Magnus</button>
       </div>
       <div class="vs-badge">VS</div>
       <div class="card">
-        <img src="lewis-hamilton.webp" alt="Lewis Hamilton">
-        <h2 class="player-name">Lewis Hamilton</h2>
-        <div class="vote-count" id="lewisCount">0</div>
+        <img src="Hikaru-Nakamura.jpg" alt="Hikaru Nakamura">
+        <h2 class="player-name">Hikaru Nakamura</h2>
+        <div class="vote-count" id="hikaruCount">0</div>
         <div class="vote-text">votes</div>
-        <button class="vote-btn" onclick="handleVote('Lewis')">Vote Lewis</button>
+        <button class="vote-btn" onclick="handleVote('Hikaru')">Vote Hikaru</button>
       </div>
     </div>
 
@@ -476,24 +476,24 @@
       <div class="stats-section">
         <div class="stats-grid">
           <div class="stat-item">
+            <div class="stat-label">Peak Rating</div>
+            <div class="stat-value">2882</div>
+          </div>
+          <div class="stat-item">
             <div class="stat-label">World Championships</div>
-            <div class="stat-value">3</div>
+            <div class="stat-value">5</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Race Wins</div>
-            <div class="stat-value">54</div>
+            <div class="stat-label">Rapid Rating</div>
+            <div class="stat-value">2850</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Pole Positions</div>
-            <div class="stat-value">30</div>
+            <div class="stat-label">Blitz Rating</div>
+            <div class="stat-value">2886</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Podiums</div>
-            <div class="stat-value">98</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Fastest Laps</div>
-            <div class="stat-value">31</div>
+            <div class="stat-label">Years as #1</div>
+            <div class="stat-value">11</div>
           </div>
         </div>
       </div>
@@ -501,30 +501,32 @@
       <div class="stats-section">
         <div class="stats-grid">
           <div class="stat-item">
-            <div class="stat-label">World Championships</div>
-            <div class="stat-value">7</div>
+            <div class="stat-label">Peak Rating</div>
+            <div class="stat-value">2816</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Race Wins</div>
-            <div class="stat-value">103</div>
+            <div class="stat-label">Speed Chess Champ</div>
+            <div class="stat-value">4</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Pole Positions</div>
-            <div class="stat-value">103</div>
+            <div class="stat-label">Rapid Rating</div>
+            <div class="stat-value">2829</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Podiums</div>
-            <div class="stat-value">197</div>
+            <div class="stat-label">Blitz Rating</div>
+            <div class="stat-value">2900</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">Fastest Laps</div>
-            <div class="stat-value">64</div>
+            <div class="stat-label">US Championships</div>
+            <div class="stat-value">5</div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="thank-you" id="thankYouMessage"></div>
+
+
 
   <footer class="footer">
     <div class="footer-content">
@@ -597,8 +599,8 @@
     }
 
     let votes = {
-        Lewis: 0,
-        Max: 0
+        Hikaru: 0,
+        Magnus: 0
     };
 
     function formatVoteCount(count) {
