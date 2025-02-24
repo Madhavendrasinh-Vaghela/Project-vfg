@@ -587,7 +587,6 @@
       <p>&copy; 2025 Cricket GOAT Comparison. All rights reserved.</p>
     </div>
   </footer>
-
   <script>
     function toggleTheme() {
       const body = document.body;
@@ -598,9 +597,10 @@
       }
     }
 
-    let votes = {
-        Jordan: 0,
-        LeBron: 0
+    // Initialize votes from localStorage or default to initial values
+    let votes = JSON.parse(localStorage.getItem('basketballVotes')) || {
+      Jordan: 4567,
+      LeBron: 5678
     };
 
     function formatVoteCount(count) {
@@ -627,6 +627,7 @@
 
     function handleVote(player) {
       votes[player]++;
+      localStorage.setItem('basketballVotes', JSON.stringify(votes));
       
       const countElement = document.getElementById(`${player.toLowerCase()}Count`);
       countElement.textContent = votes[player];
@@ -652,6 +653,42 @@
       }
     }
 
-  </script>
+    function scrambleVoteCount(element, finalCount, duration) {
+      let iterations = 0;
+      let intervalTime = 20; // Start fast
+      const finalCountStr = finalCount.toString();
+
+      const interval = setInterval(() => {
+        // Generate a random number with the same length as finalCount
+        let randomDigits = "";
+        for (let i = 0; i < finalCountStr.length; i++) {
+          randomDigits += Math.floor(Math.random() * 10);
+        }
+
+        // Display the scrambled number
+        element.textContent = randomDigits;
+
+        // Gradually slow down
+        intervalTime += 3;
+        iterations++;
+
+        // Stop at final vote count
+        if (iterations * intervalTime >= duration) {
+          clearInterval(interval);
+          element.textContent = finalCountStr;
+        }
+      }, intervalTime);
+    }
+
+    // Initialize vote counts and play animation on every page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const jordanElement = document.getElementById("jordanCount");
+      const lebronElement = document.getElementById("lebronCount");
+      
+      // Play animation every time
+      scrambleVoteCount(jordanElement, votes.Jordan, 2000);
+      scrambleVoteCount(lebronElement, votes.LeBron, 2000);
+    });
+</script>
 </body>
 </html>

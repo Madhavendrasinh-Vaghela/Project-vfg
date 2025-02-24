@@ -159,8 +159,7 @@
   <div class="thank-you" id="thankYouMessage"></div>
 
   <script>
-
-   function toggleTheme() {
+    function toggleTheme() {
       const body = document.body;
       if (body.getAttribute('data-theme') === 'dark') {
         body.removeAttribute('data-theme');
@@ -169,9 +168,18 @@
       }
     }
 
+    // Initialize votes from localStorage or default values
+    let votes = JSON.parse(localStorage.getItem('footballVotes')) || {
+      Ronaldo: 4567,
+      Messi: 5678
+    };
+
     function showThankYou(player) {
       const message = document.getElementById('thankYouMessage');
-      message.innerText = `Thank you for voting for ${player}!`;
+      message.innerHTML = `
+        <div>Thank you for voting for ${player}!</div>
+        <div style="font-size: 0.9em; margin-top: 5px">Current votes: ${formatVoteCount(votes[player])}</div>
+      `;
       message.style.opacity = '1';
       setTimeout(() => {
         message.style.opacity = '0';
@@ -183,60 +191,68 @@
       nav.style.top = "0px";
       nav.style.left = "0px";
     }
+
     function hideNav() {
       const nav = document.getElementById("navbar");
       nav.style.top = "-250px";
       nav.style.left = "-250px";
     }
 
-//real time vote count.
-let votes = {
-  Ronaldo: 0,
-  Messi: 0
-};
+    function handleVote(player) {
+      votes[player]++;
+      localStorage.setItem('footballVotes', JSON.stringify(votes));
+      
+      const countElement = document.getElementById(`${player.toLowerCase()}Count`);
+      countElement.textContent = votes[player];
+      
+      countElement.style.animation = 'none';
+      void countElement.offsetWidth;
+      countElement.style.animation = 'countUpdate 0.5s ease-out';
+      
+      showThankYou(player);
+    }
 
-function handleVote(player) {
-  // Increment vote count
-  votes[player]++;
-  
-  // Update the display
-  const countElement = document.getElementById(`${player.toLowerCase()}Count`);
-  countElement.textContent = votes[player];
-  
-  // Add animation class
-  countElement.style.animation = 'none';
-  // Trigger reflow
-  void countElement.offsetWidth;
-  countElement.style.animation = 'countUpdate 0.5s ease-out';
-  
-  // Show thank you message
-  showThankYou(player);
-}
+    function formatVoteCount(count) {
+      if (count >= 1000000) {
+        return (count / 1000000).toFixed(1) + 'M';
+      } else if (count >= 1000) {
+        return (count / 1000).toFixed(1) + 'K';
+      }
+      return count.toString();
+    }
 
-// Add these helper functions
-function formatVoteCount(count) {
-  if (count >= 1000000) {
-    return (count / 1000000).toFixed(1) + 'M';
-  } else if (count >= 1000) {
-    return (count / 1000).toFixed(1) + 'K';
-  }
-  return count.toString();
-}
+    function scrambleVoteCount(element, finalCount, duration) {
+      let iterations = 0;
+      let intervalTime = 20;
+      const finalCountStr = finalCount.toString();
 
-// Update existing showThankYou function
-function showThankYou(player) {
-  const message = document.getElementById('thankYouMessage');
-  message.innerHTML = `
-    <div>Thank you for voting for ${player}!</div>
-    <div style="font-size: 0.9em; margin-top: 5px">Current votes: ${formatVoteCount(votes[player])}</div>
-  `;
-  message.style.opacity = '1';
-  
-  // Add fade out animation
-  setTimeout(() => {
-    message.style.opacity = '0';
-  }, 3000);
-}
-  </script>
+      const interval = setInterval(() => {
+        let randomDigits = "";
+        for (let i = 0; i < finalCountStr.length; i++) {
+          randomDigits += Math.floor(Math.random() * 10);
+        }
+
+        element.textContent = randomDigits;
+
+        intervalTime += 3;
+        iterations++;
+
+        if (iterations * intervalTime >= duration) {
+          clearInterval(interval);
+          element.textContent = finalCountStr;
+        }
+      }, intervalTime);
+    }
+
+    // Initialize vote counts and play animation on every page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const ronaldoElement = document.getElementById("ronaldoCount");
+      const messiElement = document.getElementById("messiCount");
+      
+      // Play animation every time
+      scrambleVoteCount(ronaldoElement, votes.Ronaldo, 2000);
+      scrambleVoteCount(messiElement, votes.Messi, 2000);
+    });
+</script>
 </body>
 </html>
